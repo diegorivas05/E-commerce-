@@ -6,7 +6,7 @@ Proyecto desarrollado para la asignatura **Diseño y Programación de Software M
 - **Vercel App:** [https://e-commerce-wine-rho-76.vercel.app](https://e-commerce-wine-rho-76.vercel.app)
 
 ##  Video Demostrativo
-- **Enlace del video:** //poner link diegooooo grabado
+- **Enlace del video:** https://udbedu-my.sharepoint.com/:v:/g/personal/rr230271_alumno_udb_edu_sv/IQD6sjelquNWQYnkDgiR75JTAfESaMNzJdvIfGxFdrnwJTM?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=OtfxtP
 
 ##  Tecnologías Utilizadas
 - **Framework:** Next.js (App Router)
