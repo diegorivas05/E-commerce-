@@ -74,10 +74,10 @@ export default function Home() {
         <header className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
           <div>
             <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">
-              E-Commerce Store
+              Hogar & Muebles Store 🏠
             </h1>
             <p className="text-sm text-gray-500 mt-1">
-              Catálogo de productos disponibles ({productsData.length} ítems)
+              Catálogo exclusivo de muebles y decoración ({productsData.length} ítems)
             </p>
           </div>
 

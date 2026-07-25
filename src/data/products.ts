@@ -1,164 +1,175 @@
-import { Product } from '../types/product';
+import { Product } from "@/types/product";
 
 export const productsData: Product[] = [
+  // --- MESAS ---
   {
     id: 1,
-    title: 'Cien años de soledad',
-    price: 25,
-    category: 'Libros',
-    description: 'Obra maestra de Gabriel García Márquez sobre la familia Buendía en Macondo.',
-    urlImage: 'https://images.penguinrandomhouse.com/cover/9780525562443',
+    title: "Mesa de Comedor Roble Nórdico",
+    description: "Mesa espaciosa de madera de roble macizo con acabado natural para 6 personas.",
+    price: 380.00,
+    category: "Mesas",
+    urlImage: "https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?q=80&w=600&auto=format&fit=crop"
   },
   {
     id: 2,
-    title: 'El señor de los anillos (Trilogía)',
-    price: 45,
-    category: 'Libros',
-    description: 'Edición especial con la saga completa de la Tierra Media por J.R.R. Tolkien.',
-    urlImage: 'https://proassetspdlcom.comstatics2.com/usuaris/libros/fotos/358/original/portada_pack-trilogia-el-senor-de-los-anillos_j-r-r-tolkien_202206071544.jpg',
+    title: "Mesa Centro de Cristal y Metal",
+    description: "Mesa de centro estilo industrial con cristal templado y estructura de acero negro.",
+    price: 145.00,
+    category: "Mesas",
+    urlImage: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=600&auto=format&fit=crop"
   },
   {
     id: 3,
-    title: 'Cuentos de Barro',
-    price: 15,
-    category: 'Libros',
-    description: 'Colección de relatos folclóricos salvadoreños de Salvador Salazar Arrué (Salarrué).',
-    urlImage: 'https://www.librosdelaballena.com/wp-content/uploads/2020/05/cuentos-barro-244x300.png',
+    title: "Escritorio Minimalista Ejecutivo",
+    description: "Escritorio de oficina con cajones ocultos y diseño ergonómico en madera clara.",
+    price: 220.00,
+    category: "Mesas",
+    urlImage: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?q=80&w=600&auto=format&fit=crop"
   },
+
+  // --- SILLONES ---
   {
     id: 4,
-    title: 'Don Quijote de la Mancha',
-    price: 30,
-    category: 'Libros',
-    description: 'La gran obra cumbre de la literatura española por Miguel de Cervantes.',
-    urlImage: 'https://images.penguinrandomhouse.com/cover/9788420412146',
+    title: "Sofá Seccional Gris Moderno",
+    description: "Sofá chaise longue de 3 plazas tapizado en tela transpirable de alta densidad.",
+    price: 650.00,
+    category: "Sillones",
+    urlImage: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=600&auto=format&fit=crop"
   },
   {
     id: 5,
-    title: 'Clean Code: A Handbook of Agile Software Craftsmanship',
-    price: 50,
-    category: 'Tecnología',
-    description: 'Guía fundamental de Robert C. Martin para escribir código limpio y mantenible.',
-    urlImage: 'https://m.media-amazon.com/images/I/41xShLch03L._SX376_BO1,204,203,200_.jpg',
+    title: "Sillón Reclinable de Cuero Moka",
+    description: "Sillón individual reclinable con acolchado mullido y soporte lumbar premium.",
+    price: 310.00,
+    category: "Sillones",
+    urlImage: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=600&auto=format&fit=crop"
   },
   {
     id: 6,
-    title: 'Laptop Pro 15 Gamer',
-    price: 1200,
-    category: 'Tecnología',
-    description: 'Laptop de alto rendimiento con procesador i7, 16GB RAM y tarjeta gráfica RTX 4060.',
-    urlImage: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?q=80&w=500',
+    title: "Sillón Ocasional Velvet Azul",
+    description: "Sillón decorativo tapizado en terciopelo suave con patas de metal dorado.",
+    price: 185.00,
+    category: "Sillones",
+    urlImage: "https://images.unsplash.com/photo-1580481072645-022f9a6d83d0?q=80&w=600&auto=format&fit=crop"
   },
+
+  // --- ARMARIOS Y MUEBLES ---
   {
     id: 7,
-    title: 'Teclado Mecánico RGB',
-    price: 85,
-    category: 'Tecnología',
-    description: 'Teclado mecánico con switches rojos, retroiluminación RGB personalizada.',
-    urlImage: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?q=80&w=500',
+    title: "Armario Zapatero 3 Puertas",
+    description: "Ropero organizador en acabado blanco mate con espejo central y repisas ajustables.",
+    price: 420.00,
+    category: "Armarios",
+    urlImage: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=600&auto=format&fit=crop"
   },
   {
     id: 8,
-    title: 'Mouse Inalámbrico Ergonómico',
-    price: 40,
-    category: 'Tecnología',
-    description: 'Mouse de alta precisión con conectividad Bluetooth y batería de larga duración.',
-    urlImage: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?q=80&w=500',
+    title: "Aparador Credenza Estilo Mid-Century",
+    description: "Mueble buffet bajo de madera con 4 puertas correderas para comedor o sala.",
+    price: 290.00,
+    category: "Armarios",
+    urlImage: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?q=80&w=600&auto=format&fit=crop"
   },
   {
     id: 9,
-    title: 'Monitor Gaming 27 165Hz',
-    price: 280,
-    category: 'Tecnología',
-    description: 'Pantalla IPS Full HD de 1ms de respuesta ideal para juegos competitivos.',
-    urlImage: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=500',
+    title: "Estantería Flotante Abierta",
+    description: "Librero y mueble de exhibición de 5 niveles en madera de pino y marco metálico.",
+    price: 160.00,
+    category: "Armarios",
+    urlImage: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=600&auto=format&fit=crop"
   },
+
+  // --- ESPEJOS ---
   {
     id: 10,
-    title: 'Audífonos Gamer 7.1 Surround',
-    price: 65,
-    category: 'Tecnología',
-    description: 'Diadema ergonómica con micrófono de cancelación de ruido activa.',
-    urlImage: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=500',
+    title: "Espejo de Cuerpo Entero de Arco",
+    description: "Espejo de pie con marco metálico dorado curvilíneo para dormitorio o vestidor.",
+    price: 135.00,
+    category: "Espejos",
+    urlImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=600&auto=format&fit=crop"
   },
   {
     id: 11,
-    title: 'Camiseta Oficial Deportiva',
-    price: 35,
-    category: 'Ropa',
-    description: 'Camiseta con tecnología transpirable ideal para entrenamiento de alta intensidad.',
-    urlImage: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=500',
+    title: "Espejo Pared Circular Bamboo",
+    description: "Espejo decorativo redondo con borde tallado en mimbre/bambú natural.",
+    price: 75.00,
+    category: "Espejos",
+    urlImage: "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?q=80&w=600&auto=format&fit=crop"
   },
   {
     id: 12,
-    title: 'Balón de Baloncesto Oficial',
-    price: 50,
-    category: 'Deportes',
-    description: 'Balón de cuero sintético con agarre profesional para interiores y exteriores.',
-    urlImage: 'https://images.unsplash.com/photo-1519861531473-9200262188bf?q=80&w=500',
+    title: "Espejo Retroiluminado LED",
+    description: "Espejo de baño moderno con luz LED cálida integrada y sistema antivaho.",
+    price: 195.00,
+    category: "Espejos",
+    urlImage: "https://images.unsplash.com/photo-1622372738946-62e02505feb3?q=80&w=600&auto=format&fit=crop"
   },
+
+  // --- SILLAS ---
   {
     id: 13,
-    title: 'Zapatillas Deportivas Pro',
-    price: 110,
-    category: 'Deportes',
-    description: 'Calzado ergonómico con amortiguación mejorada para máximo confort.',
-    urlImage: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=500',
+    title: "Set x4 Sillas Eames Comedor",
+    description: "Juego de 4 sillas de diseño nórdico con patas de madera de haya y asiento ergonómico.",
+    price: 160.00,
+    category: "Sillas",
+    urlImage: "https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=600&auto=format&fit=crop"
   },
   {
     id: 14,
-    title: 'Mochila Táctica para Laptop',
-    price: 45,
-    category: 'Accesorios',
-    description: 'Mochila resistente al agua con compartimento acolchado para laptops de 15 pulgadas.',
-    urlImage: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=500',
+    title: "Silla de Escritorio Ergonomía Total",
+    description: "Silla giratoria con apoyo para la cabeza, malla respirable y descansa brazos 3D.",
+    price: 210.00,
+    category: "Sillas",
+    urlImage: "https://images.unsplash.com/photo-1580481072645-022f9a6d83d0?q=80&w=600&auto=format&fit=crop"
   },
   {
     id: 15,
-    title: 'Reloj Inteligente Smartwatch',
-    price: 95,
-    category: 'Tecnología',
-    description: 'Sensor de ritmo cardíaco, medición de sueño y notificaciones en tiempo real.',
-    urlImage: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=500',
+    title: "Banca Bar Alta de Madera Maciza",
+    description: "Taburete alto estilo rústico para barra de cocina o desayunador.",
+    price: 85.00,
+    category: "Sillas",
+    urlImage: "https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=600&auto=format&fit=crop"
   },
+
+  // --- ILUMINACIÓN ---
   {
     id: 16,
-    title: 'Silla Gamer Ergonómica',
-    price: 210,
-    category: 'Hogar',
-    description: 'Silla reclinable con soporte lumbar y descansabrazos 3D.',
-    urlImage: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?q=80&w=500',
+    title: "Lámpara de Pie Trípode Nórdica",
+    description: "Lámpara de lectura para sala con estructura de madera y pantalla de lino blanco.",
+    price: 110.00,
+    category: "Iluminación",
+    urlImage: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?q=80&w=600&auto=format&fit=crop"
   },
   {
     id: 17,
-    title: 'Escritorio Elevable Eléctrico',
-    price: 320,
-    category: 'Hogar',
-    description: 'Mesa de trabajo ajustable en altura con memoria de posiciones.',
-    urlImage: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?q=80&w=500',
+    title: "Lámpara Colgante Vintage Industrial",
+    description: "Lámpara de techo estilo campana metálica en negro mate para barra de cocina.",
+    price: 65.00,
+    category: "Iluminación",
+    urlImage: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?q=80&w=600&auto=format&fit=crop"
   },
   {
     id: 18,
-    title: 'Lámpara LED de Escritorio',
-    price: 25,
-    category: 'Hogar',
-    description: 'Lámpara con brillo regulable y cargador inalámbrico integrado.',
-    urlImage: 'https://images.unsplash.com/photo-1534349735944-2b3a6f7a268f?q=80&w=500',
+    title: "Lámpara de Mesa Cerámica Artística",
+    description: "Lámpara de noche para mesa de noche con base de cerámica texturizada.",
+    price: 55.00,
+    category: "Iluminación",
+    urlImage: "https://images.unsplash.com/photo-1543198181-e619b692b11c?q=80&w=600&auto=format&fit=crop"
   },
   {
     id: 19,
-    title: 'Botella Térmica de Acero 1L',
-    price: 20,
-    category: 'Deportes',
-    description: 'Mantiene bebidas frías por 24 horas y calientes por 12 horas.',
-    urlImage: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=500',
+    title: "Plafón LED de Techo Regulable",
+    description: "Luminaria moderna de techo ultra delgada con control remoto para intensidad de luz.",
+    price: 90.00,
+    category: "Iluminación",
+    urlImage: "https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?q=80&w=600&auto=format&fit=crop"
   },
   {
     id: 20,
-    title: 'Soporte para Laptop de Aluminio',
-    price: 30,
-    category: 'Accesorios',
-    description: 'Soporte ventilado y plegable para mejorar la postura de trabajo.',
-    urlImage: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?q=80&w=500',
+    title: "Lámpara de Escritorio Brazo Flexible",
+    description: "Lámpara de trabajo articulada con puerto de carga USB integrado.",
+    price: 45.00,
+    category: "Iluminación",
+    urlImage: "https://images.unsplash.com/photo-1534353436294-0dbd4bdac845?q=80&w=600&auto=format&fit=crop"
   }
 ];
