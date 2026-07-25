@@ -8,7 +8,7 @@ export const products: Product[] = [
     description: "Sofá modular de 3 plazas tapizado en tela transpirable de alta densidad.",
     price: 650.00,
     category: "Sofás",
-    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1759722665935-0967b4e0da93?q=80&w=754&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ export const products: Product[] = [
     description: "Sillón decorativo tapizado en terciopelo suave con patas de metal dorado.",
     price: 185.00,
     category: "Sillones",
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80",
+    image: "https://plus.unsplash.com/premium_photo-1723874468810-3147a74bb3a7?q=80&w=1114&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ export const products: Product[] = [
     description: "Sillón reclinable confortable acolchado ideal para lectura o descanso.",
     price: 310.00,
     category: "Sillones",
-    image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1759722666941-a90d5a15b1d7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8U2lsbCVDMyVCM24lMjBSZWNsaW5hYmxlfGVufDB8fDB8fHww",
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ export const products: Product[] = [
     description: "Amplio armario con compartimentos y cajones organizadores integrados.",
     price: 520.00,
     category: "Roperos",
-    image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1706734463726-0ed0e7de3e4e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Um9wZXJvJTIwZGUlMjBNYWRlcmElMjAzJTIwUHVlcnRhc3xlbnwwfHwwfHx8MA%3D%3D",
   },
   {
     id: 6,
@@ -50,7 +50,7 @@ export const products: Product[] = [
     description: "Mueble cajonero auxiliar de roble claro con rieles telescópicos.",
     price: 210.00,
     category: "Roperos",
-    image: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1736842320241-fdb787c5d261?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Q29tb2RhJTIwTWluaW1hbGlzdGElMjBkZSUyMDQlMjBDYWpvbmVzfGVufDB8fDB8fHwws",
   },
   {
     id: 7,
@@ -84,7 +84,7 @@ export const products: Product[] = [
     description: "Mesa auxiliar ratona de cristal templado ovalada para sala.",
     price: 130.00,
     category: "Mesas",
-    image: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1647967527216-adea2f078e07?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8TWVzYSUyMENlbnRybyUyMGRlJTIwQ3Jpc3RhbCUyMHklMjBNZXRhbHxlbnwwfHwwfHx8MA%3D%3D",
   },
   {
     id: 11,
@@ -110,7 +110,7 @@ export const products: Product[] = [
     description: "Mesa auxiliar de noche con cajón flotante y patas de pino.",
     price: 75.00,
     category: "Camas",
-    image: "https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?w=600&q=80",
+    image: "https://plus.unsplash.com/premium_photo-1682402665354-47f253ce0060?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8TWVzYSUyMGRlJTIwTm9jaGUlMjBkZSUyME1hZGVyYSUyME4lQzMlQjNyZGljYXxlbnwwfHwwfHx8MA%3D%3D",
   },
   {
     id: 14,
@@ -152,7 +152,7 @@ export const products: Product[] = [
     description: "Espejo decorativo grande para entrada, vestidor o baño.",
     price: 110.00,
     category: "Iluminación",
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80",
+    image: "https://plus.unsplash.com/premium_photo-1733514692259-57cdff0a750f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8RXNwZWpvJTIwZGUlMjBQYXJlZCUyME92YWxhZG8lMjBNYXJjbyUyMERvcmFkb3xlbnwwfHwwfHx8MA%3D%3D",
   },
   {
     id: 19,
@@ -160,7 +160,7 @@ export const products: Product[] = [
     description: "Asiento auxiliar reposapiés redondo multifuncional.",
     price: 62.00,
     category: "Sillones",
-    image: "https://images.unsplash.com/photo-1567016432779-094069958ea5?w=600&q=80",
+    image: "https://images.unsplash.com/photo-1593195150503-8e2a51338ff2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8UHVmZiUyME90b21hbm8lMjBkZSUyMFRlbGElMjBUZXh0dXJpemFkYXxlbnwwfHwwfHx8MA%3D%3D",
   },
   {
     id: 20,
@@ -168,6 +168,6 @@ export const products: Product[] = [
     description: "Perchero de árbol resistente con 8 ganchos para sacos y bolsos.",
     price: 55.00,
     category: "Roperos",
-    image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80",
+    image: "https://plus.unsplash.com/premium_photo-1770086948507-5c8931ad43cd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8UGVyY2hlcm8lMjBkZSUyMFBpZSUyMGVuJTIwTWFkZXJhJTIwTmF0dXJhbHxlbnwwfHwwfHx8MA%3D%3D",
   },
 ];
