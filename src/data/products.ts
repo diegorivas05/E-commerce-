@@ -1,115 +1,173 @@
-export const products = [
-  // MESAS
+import { Product } from "@/types/product";
+
+export const products: Product[] = [
+  // --- SOFÁS Y SILLONES ---
   {
     id: 1,
-    name: "Mesa de Comedor Roble Nórdica",
-    category: "Mesas",
-    price: 380.00,
-    description: "Mesa de comedor minimalista construida en madera de roble natural para 6 personas.",
-    image: "https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?q=80&w=800&auto=format&fit=crop"
+    name: "Sofá Seccional Gris Moderno",
+    description: "Sofá modular de 3 plazas tapizado en tela transpirable de alta densidad.",
+    price: 650.00,
+    category: "Sofás",
+    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80",
   },
   {
     id: 2,
-    name: "Mesa Centro de Cristal y Metal",
-    category: "Mesas",
-    price: 145.00,
-    description: "Mesa de centro estilizada con superficie de vidrio templado y estructura de acero negro.",
-    image: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=800&auto=format&fit=crop"
+    name: "Sillón Ocasional Velvet Azul",
+    description: "Sillón decorativo tapizado en terciopelo suave con patas de metal dorado.",
+    price: 185.00,
+    category: "Sillones",
+    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80",
   },
   {
     id: 3,
-    name: "Escritorio Minimalista Ejecutivo",
-    category: "Mesas",
-    price: 220.00,
-    description: "Escritorio amplio de madera clara ideal para oficina en casa o estudio.",
-    image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?q=80&w=800&auto=format&fit=crop"
+    name: "Sillón Reclinable de Cuero Miel",
+    description: "Sillón reclinable confortable acolchado ideal para lectura o descanso.",
+    price: 310.00,
+    category: "Sillones",
+    image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=600&q=80",
   },
-
-  // SILLONES
   {
     id: 4,
-    name: "Sofa Seccional Gris Moderno",
-    category: "Sillones",
-    price: 650.00,
-    description: "Soft sofa de 3 plazas tapizado en tela transpirable de alta densidad.",
-    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=800&auto=format&fit=crop"
+    name: "Sofá Cama Tapizado Beige",
+    description: "Sofá convertible en cama matrimonial con estructura de madera reforzada.",
+    price: 480.00,
+    category: "Sofás",
+    image: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=600&q=80",
   },
+
+  // --- ROPEROS Y ALMACENAMIENTO ---
   {
     id: 5,
-    name: "Sillón Reclinable de Cuero Moka",
-    category: "Sillones",
-    price: 310.00,
-    description: "Sillón individual con sistema reclinable ergonómico acolchado.",
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800&auto=format&fit=crop"
+    name: "Ropero de Madera 3 Puertas",
+    description: "Amplio armario con compartimentos y cajones organizadores integrados.",
+    price: 520.00,
+    category: "Roperos",
+    image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=600&q=80",
   },
   {
     id: 6,
-    name: "Sillón Ocasional Velvet Azul",
-    category: "Sillones",
-    price: 185.00,
-    description: "Sillón decorativo tapizado en terciopelo suave con patas de metal dorado.",
-    image: "https://images.unsplash.com/photo-1580481072645-022f9a6d83d0?q=80&w=800&auto=format&fit=crop"
+    name: "Comoda Minimalista de 4 Cajones",
+    description: "Mueble cajonero auxiliar de roble claro con rieles telescópicos.",
+    price: 210.00,
+    category: "Roperos",
+    image: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=600&q=80",
   },
-
-  // ARMARIOS
   {
     id: 7,
-    name: "Ropero de Madera 3 Puertas",
-    category: "Armarios",
-    price: 520.00,
-    description: "Armario amplio con cajoneras internas y espejo integrado en puerta central.",
-    image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=800&auto=format&fit=crop"
+    name: "Estantería Industrial de Metal y Madera",
+    description: "Librero abierto de 5 niveles resistente para oficina o sala.",
+    price: 145.00,
+    category: "Roperos",
+    image: "https://images.unsplash.com/photo-1594620302200-9a762244a156?w=600&q=80",
   },
+
+  // --- MESAS Y SILLAS ---
   {
     id: 8,
-    name: "Zapatera Vertical Organizadora",
-    category: "Armarios",
-    price: 110.00,
-    description: "Mueble zapatero compacto con capacidad para 18 pares de calzado.",
-    image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800&auto=format&fit=crop"
+    name: "Mesa de Comedor de Madera Maciza",
+    description: "Mesa para 6 personas fabricada en roble oscuro con acabado mate.",
+    price: 420.00,
+    category: "Mesas",
+    image: "https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?w=600&q=80",
   },
   {
     id: 9,
-    name: "Estantería Abierta Estilo Industrial",
-    category: "Armarios",
-    price: 175.00,
-    description: "Librero de 5 niveles con repisas de madera y parantes metálicos.",
-    image: "https://images.unsplash.com/photo-1594620302200-9a762244a156?q=80&w=800&auto=format&fit=crop"
+    name: "Juego de 2 Sillas Comedor Nórdicas",
+    description: "Sillas ergonómicas con patas de haya y asiento acolchado en blanco.",
+    price: 115.00,
+    category: "Mesas",
+    image: "https://images.unsplash.com/photo-1503602642458-232111445657?w=600&q=80",
   },
-
-  // SILLAS
   {
     id: 10,
-    name: "Silla de Escritorio Ergonomía Total",
-    category: "Sillas",
-    price: 210.00,
-    description: "Silla giratoria con apoyo para la cabeza, malla respirable y descansa brazos 3D.",
-    image: "https://images.unsplash.com/photo-1505797149-43b0069ec26b?q=80&w=800&auto=format&fit=crop"
+    name: "Mesa Centro de Cristal y Metal",
+    description: "Mesa auxiliar ratona de cristal templado ovalada para sala.",
+    price: 130.00,
+    category: "Mesas",
+    image: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?w=600&q=80",
   },
   {
     id: 11,
-    name: "Set x2 Sillas Comedor Eames",
-    category: "Sillas",
-    price: 95.00,
-    description: "Sillas de polipropileno blanco con patas de madera estilo escandinavo.",
-    image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?q=80&w=800&auto=format&fit=crop"
+    name: "Escritorio Ecorganizable de Trabajo",
+    description: "Escritorio moderno para Home Office con pasacables y repisa.",
+    price: 195.00,
+    category: "Mesas",
+    image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=600&q=80",
   },
 
-  // ILUMINACIÓN
+  // --- CAMAS Y DORMITORIO ---
   {
     id: 12,
-    name: "Lámpara de Mesa Cerámica Artística",
-    category: "Iluminación",
-    price: 55.00,
-    description: "Lámpara de noche para mesa con base de cerámica texturizada y pantalla cálida.",
-    image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?q=80&w=800&auto=format&fit=crop"
+    name: "Cama Queen Size con Cabecera Tapizada",
+    description: "Estructura de cama matrimonial con respaldo capitoné en tela gris.",
+    price: 590.00,
+    category: "Camas",
+    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80",
   },
   {
     id: 13,
-    name: "Lámpara de Pie Arquitectónica",
+    name: "Mesa de Noche de Madera Nórdica",
+    description: "Mesa auxiliar de noche con cajón flotante y patas de pino.",
+    price: 75.00,
+    category: "Camas",
+    image: "https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?w=600&q=80",
+  },
+  {
+    id: 14,
+    name: "Colchón Ortopédico Matrimonial Premium",
+    description: "Colchón de resortes ensacados con colchoneta de memory foam.",
+    price: 340.00,
+    category: "Camas",
+    image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80",
+  },
+
+  // --- ILUMINACIÓN Y DECORACIÓN ---
+  {
+    id: 15,
+    name: "Lámpara de Pie Nórdica Arco",
+    description: "Lámpara de pie de arco ajustable con base de mármol negro.",
+    price: 95.00,
     category: "Iluminación",
-    price: 130.00,
-    description: "Lámpara de pie articulada con acabado negro mate para sala o lectura.",
-    image: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?q=80&w=800&auto=format&fit=crop"
-  }
+    image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&q=80",
+  },
+  {
+    id: 16,
+    name: "Lámpara Colgante de Bambú Tejido",
+    description: "Luminaria artesanal de techo que genera luces cálidas ambientales.",
+    price: 68.00,
+    category: "Iluminación",
+    image: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=600&q=80",
+  },
+  {
+    id: 17,
+    name: "Lámpara de Mesa Táctil LED",
+    description: "Lámpara de velador de diseño contemporáneo con regulador de brillo.",
+    price: 45.00,
+    category: "Iluminación",
+    image: "https://images.unsplash.com/photo-1517991104123-1d56a6e81ed9?w=600&q=80",
+  },
+  {
+    id: 18,
+    name: "Espejo de Pared Ovalado Marco Dorado",
+    description: "Espejo decorativo grande para entrada, vestidor o baño.",
+    price: 110.00,
+    category: "Iluminación",
+    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80",
+  },
+  {
+    id: 19,
+    name: "Puff Otomano de Tela Texturizada",
+    description: "Asiento auxiliar reposapiés redondo multifuncional.",
+    price: 62.00,
+    category: "Sillones",
+    image: "https://images.unsplash.com/photo-1567016432779-094069958ea5?w=600&q=80",
+  },
+  {
+    id: 20,
+    name: "Perchero de Pie en Madera Natural",
+    description: "Perchero de árbol resistente con 8 ganchos para sacos y bolsos.",
+    price: 55.00,
+    category: "Roperos",
+    image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80",
+  },
 ];

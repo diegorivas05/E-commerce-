@@ -1,16 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { toast } from "sonner";
 
 interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onLoginSuccess: (user: { name: string; email: string }) => void;
+  onLogin: (user: { name: string; email: string }) => void;
 }
 
-export function AuthModal({ isOpen, onClose, onLoginSuccess }: AuthModalProps) {
-  const [isRegister, setIsRegister] = useState(false);
+export function AuthModal({ isOpen, onClose, onLogin }: AuthModalProps) {
+  const [isLogin, setIsLogin] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,25 +18,14 @@ export function AuthModal({ isOpen, onClose, onLoginSuccess }: AuthModalProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !password || (isRegister && !name)) {
-      toast.error("Por favor completa todos los campos");
-      return;
-    }
-
-    const userData = {
-      name: isRegister ? name : email.split("@")[0],
-      email,
-    };
-
-    localStorage.setItem("user_session", JSON.stringify(userData));
-    onLoginSuccess(userData);
-    toast.success(isRegister ? "¡Cuenta creada exitosamente!" : "¡Sesión iniciada!");
+    if (!email || !password || (!isLogin && !name)) return;
+    onLogin({ name: isLogin ? email.split("@")[0] : name, email });
     onClose();
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl relative">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+      <div className="bg-white w-full max-w-md rounded-2xl p-6 shadow-2xl relative border border-gray-100">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 font-bold"
@@ -45,74 +33,71 @@ export function AuthModal({ isOpen, onClose, onLoginSuccess }: AuthModalProps) {
           ✕
         </button>
 
-        <h2 className="text-2xl font-bold text-gray-900 mb-1">
-          {isRegister ? "Crear Cuenta" : "Iniciar Sesión"}
+        <h2 className="text-2xl font-bold text-gray-900 text-center mb-6">
+          {isLogin ? "Iniciar Sesión" : "Crear Cuenta"}
         </h2>
-        <p className="text-xs text-gray-500 mb-6">
-          {isRegister
-            ? "Regístrate para realizar tus compras de muebles"
-            : "Ingresa tus credenciales para continuar"}
-        </p>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          {isRegister && (
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {!isLogin && (
             <div>
-              <label className="text-xs font-semibold text-gray-700 block mb-1">
+              <label className="block text-xs font-semibold text-gray-700 mb-1">
                 Nombre Completo
               </label>
               <input
                 type="text"
+                required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Ej. Diego Rivas"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none"
+                placeholder="Tu nombre"
+                className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-gray-900 placeholder:text-gray-400 text-sm focus:outline-none focus:border-indigo-600"
               />
             </div>
           )}
 
           <div>
-            <label className="text-xs font-semibold text-gray-700 block mb-1">
+            <label className="block text-xs font-semibold text-gray-700 mb-1">
               Correo Electrónico
             </label>
             <input
               type="email"
+              required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="correo@ejemplo.com"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none"
+              className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-gray-900 placeholder:text-gray-400 text-sm focus:outline-none focus:border-indigo-600"
             />
           </div>
 
           <div>
-            <label className="text-xs font-semibold text-gray-700 block mb-1">
+            <label className="block text-xs font-semibold text-gray-700 mb-1">
               Contraseña
             </label>
             <input
               type="password"
+              required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 outline-none"
+              className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-gray-900 placeholder:text-gray-400 text-sm focus:outline-none focus:border-indigo-600"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 rounded-lg transition text-sm shadow-md mt-2 cursor-pointer"
+            className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-xl transition cursor-pointer shadow-md mt-2"
           >
-            {isRegister ? "Registrarse" : "Ingresar"}
+            {isLogin ? "Entrar" : "Registrarse"}
           </button>
         </form>
 
-        <div className="mt-4 text-center">
+        <div className="text-center mt-4">
           <button
-            type="button"
-            onClick={() => setIsRegister(!isRegister)}
-            className="text-xs text-indigo-600 hover:underline font-medium"
+            onClick={() => setIsLogin(!isLogin)}
+            className="text-xs text-indigo-600 hover:underline font-semibold"
           >
-            {isRegister
-              ? "¿Ya tienes cuenta? Inicia sesión"
-              : "¿No tienes cuenta? Regístrate gratis"}
+            {isLogin
+              ? "¿No tienes cuenta? Regístrate aquí"
+              : "¿Ya tienes cuenta? Inicia sesión"}
           </button>
         </div>
       </div>
