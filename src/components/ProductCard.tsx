@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Product } from "@/types/product";
 
 interface ProductCardProps {
@@ -9,41 +10,41 @@ interface ProductCardProps {
 
 export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between hover:shadow-md transition">
-      <div className="relative h-48 w-full bg-gray-100">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-full object-cover"
+    <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200 flex flex-row items-center gap-4">
+      {/* IMAGEN A LA IZQUIERDA USANDO NEXT/IMAGE */}
+      <div className="relative w-24 h-24 sm:w-28 sm:h-28 flex-shrink-0 bg-gray-50 rounded-xl overflow-hidden">
+        <Image
+          src={product.urlImage}
+          alt={product.title}
+          fill
+          sizes="(max-width: 768px) 100px, 112px"
+          className="object-cover"
         />
-        <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-gray-700 text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">
-          {product.category}
-        </span>
       </div>
 
-      <div className="p-5 flex-1 flex flex-col justify-between">
+      {/* INFORMACIÓN Y NOMBRE A LA DERECHA */}
+      <div className="flex-1 flex flex-col justify-between h-full py-1">
         <div>
-          <h3 className="font-bold text-gray-900 text-base mb-1 line-clamp-1">
-            {product.name}
+          <span className="text-[10px] font-semibold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md uppercase tracking-wider">
+            {product.category || "General"}
+          </span>
+          <h3 className="text-base font-bold text-gray-900 mt-1 line-clamp-1">
+            {product.title}
           </h3>
-          <p className="text-gray-500 text-xs line-clamp-2 mb-4 leading-relaxed">
-            {product.description}
+          <p className="text-xs text-gray-500 line-clamp-2 mt-0.5">
+            {product.description || "Producto de alta calidad para tu hogar."}
           </p>
         </div>
 
-        <div className="flex items-center justify-between pt-2 border-t border-gray-100">
-          <div>
-            <span className="text-xs text-gray-400 block">Precio</span>
-            <span className="text-lg font-extrabold text-indigo-600">
-              ${product.price.toFixed(2)}
-            </span>
-          </div>
-
+        <div className="flex items-center justify-between mt-3 pt-2 border-t border-gray-50">
+          <span className="text-lg font-black text-gray-900">
+            ${product.price.toFixed(2)}
+          </span>
           <button
             onClick={() => onAddToCart(product)}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-xs px-4 py-2.5 rounded-xl transition cursor-pointer shadow-sm active:scale-95"
+            className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg transition-colors cursor-pointer"
           >
-            + Agregar
+            Agregar
           </button>
         </div>
       </div>
