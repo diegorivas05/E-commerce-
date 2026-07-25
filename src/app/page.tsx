@@ -25,7 +25,7 @@ export default function Home() {
       try {
         setCart(JSON.parse(savedCart));
       } catch (e) {
-        console.error("Error al cargar carrito guardado:", e);
+        console.error("Error cargando carrito:", e);
       }
     }
 
@@ -34,7 +34,7 @@ export default function Home() {
       try {
         setUser(JSON.parse(savedUser));
       } catch (e) {
-        console.error("Error al cargar sesión de usuario:", e);
+        console.error("Error cargando sesión:", e);
       }
     }
 
@@ -70,7 +70,7 @@ export default function Home() {
       return [...prevCart, { ...product, quantity: 1 }];
     });
 
-    toast.success(`"${product.name}" agregado al carrito`, {
+    toast.success(`"${product.name}" agregado`, {
       description: `Precio: $${product.price.toFixed(2)}`,
     });
   };
@@ -103,21 +103,29 @@ export default function Home() {
 
   const handleCheckout = () => {
     if (cart.length === 0) {
-      toast.error("El carrito está vacío");
+      toast.warning("El carrito está vacío", {
+        description: "Agrega productos antes de proceder a la compra.",
+      });
       return;
     }
+
     if (!user) {
-      toast.info("Inicia sesión para finalizar tu compra");
+      toast.warning("Inicio de sesión requerido", {
+        description: "Por favor inicia sesión o regístrate para completar tu orden.",
+      });
       setIsAuthOpen(true);
       return;
     }
+
     setIsInvoiceOpen(true);
   };
 
   const handleLogout = () => {
     localStorage.removeItem("user_session");
     setUser(null);
-    toast.info("Sesión cerrada");
+    toast.info("Sesión cerrada", {
+      description: "Has salido de tu cuenta de forma segura.",
+    });
   };
 
   const totalCartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -140,14 +148,14 @@ export default function Home() {
               Hogar & Muebles Store 🏠
             </h1>
             <p className="text-sm text-gray-500 mt-1">
-              Catálogo exclusivo de muebles y decoración ({products.length} ítems)
+              Catálogo exclusivo de muebles y decoración ({products.length} productos)
             </p>
           </div>
 
           <div className="flex items-center gap-4">
             {user ? (
-              <div className="flex items-center gap-3 bg-gray-100 px-3 py-1.5 rounded-xl text-xs">
-                <span className="font-semibold text-gray-700">👤 {user.name}</span>
+              <div className="flex items-center gap-3 bg-gray-100 px-3.5 py-2 rounded-xl text-xs">
+                <span className="font-semibold text-gray-800">👤 {user.name}</span>
                 <button
                   onClick={handleLogout}
                   className="text-red-500 hover:underline cursor-pointer font-medium"
@@ -158,7 +166,7 @@ export default function Home() {
             ) : (
               <button
                 onClick={() => setIsAuthOpen(true)}
-                className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold px-4 py-2 rounded-xl transition shadow-sm cursor-pointer"
+                className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition shadow-sm cursor-pointer"
               >
                 Iniciar Sesión / Registro
               </button>
@@ -167,7 +175,7 @@ export default function Home() {
             <div className="flex items-center gap-2 bg-indigo-50 border border-indigo-100 px-4 py-2 rounded-xl">
               <span className="text-lg">🛒</span>
               <span className="text-sm font-semibold text-indigo-900">
-                {totalCartCount} productos
+                {totalCartCount} ítems
               </span>
             </div>
           </div>
