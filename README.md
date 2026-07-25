@@ -1,20 +1,32 @@
-# 🛒 E-Commerce Store - Desafío Práctico 1
+# 🏠 Hogar & Muebles Store - E-Commerce App
 
 Proyecto desarrollado para la asignatura **Diseño y Programación de Software Multiplataforma (DPS104)** en la Universidad Don Bosco.
 
+## 🌐 Enlace del Sitio Desplegado
+- **Vercel App:** [https://tu-proyecto.vercel.app](https://tu-proyecto.vercel.app)
+
+## 📽️ Video Demostrativo
+- **Enlace del video:** [Colocar aquí el enlace de YouTube / Loom / Drive]
+
 ## 🚀 Tecnologías Utilizadas
+- **Framework:** Next.js (App Router)
+- **Lenguaje:** TypeScript
+- **Estilos:** Tailwind CSS
+- **Notificaciones:** Sonner
+- **Persistencia:** LocalStorage
+- **Imágenes:** `next/image`
 
-- **Framework:** [Next.js](https://nextjs.org/) (App Router & Turbopack)
-- **Lenguaje:** [TypeScript](https://www.typescriptlang.org/)
-- **Estilos:** [Tailwind CSS](https://tailwindcss.com/)
-- **Notificaciones:** [Sonner](https://sonner.emilkowal.ski/)
-- **Optimización de Imágenes:** `next/image`
+## ⚙️ Funcionalidades Implementadas
+1. **Catálogo de Muebles:** 20 productos clasificados con imágenes optimizadas y descripciones técnicas[cite: 1].
+2. **Filtro por Categorías:** Navegación en tiempo real (Mesas, Sillones, Armarios, Espejos, Sillas, Iluminación)[cite: 1].
+3. **Carrito Interactivo:** Modificación de cantidades, eliminación individual, limpieza total y persistencia en `localStorage`[cite: 1].
+4. **Módulo de Autenticación:** Registro e inicio de sesión de usuarios almacenado localmente[cite: 1].
+5. **Facturación Digital:** Generación de comprobante detallado con cálculo de IVA y simulación de envío por correo electrónico[cite: 1].
+6. **UX:** Confirmaciones personalizadas con Sonner (sin alertas nativas de JS)[cite: 1].
 
-## 📁 Estructura del Proyecto
-
-```text
-src/
-├── app/                  # Rutas y layout principal de Next.js
-├── components/           # Componentes reutilizables (ProductCard, Cart, etc.)
-├── data/                 # Archivos de datos estáticos (20 productos)
-└── types/                # Interfaces y definiciones de TypeScript
+## 🛠️ Instalación y Ejecución Local
+```bash
+git clone [https://github.com/diegorivas05/E-commerce-.git](https://github.com/diegorivas05/E-commerce-.git)
+cd E-commerce-
+npm install
+npm run dev
