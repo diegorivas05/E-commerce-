@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { productsData } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 import { Cart } from "@/components/Cart";
@@ -10,6 +10,27 @@ import { toast } from "sonner";
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Todas");
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // 1. Cargar carrito desde localStorage al iniciar
+  useEffect(() => {
+    const savedCart = localStorage.getItem("shopping_cart");
+    if (savedCart) {
+      try {
+        setCart(JSON.parse(savedCart));
+      } catch (e) {
+        console.error("Error al cargar localStorage", e);
+      }
+    }
+    setIsLoaded(true);
+  }, []);
+
+  // 2. Guardar carrito en localStorage cuando cambie
+  useEffect(() => {
+    if (isLoaded) {
+      localStorage.setItem("shopping_cart", JSON.stringify(cart));
+    }
+  }, [cart, isLoaded]);
 
   const categories = [
     "Todas",
@@ -89,7 +110,7 @@ export default function Home() {
           </div>
         </header>
 
-        {/* Layout Principal: Catálogo a la izquierda, Carrito a la derecha */}
+        {/* Layout Principal */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 flex flex-col gap-6">
             {/* Filtro por Categorías */}
