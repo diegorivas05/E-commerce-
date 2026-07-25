@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { productsData } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 import { Cart } from "@/components/Cart";
+import { AuthModal } from "@/components/AuthModal";
+import { InvoiceModal } from "@/components/InvoiceModal";
 import { Product, CartItem } from "@/types/product";
 import { toast } from "sonner";
 
@@ -11,21 +13,30 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Todas");
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [user, setUser] = useState<{ name: string; email: string } | null>(null);
 
-  // 1. Cargar carrito desde localStorage al iniciar
+  // Modales
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [isInvoiceOpen, setIsInvoiceOpen] = useState(false);
+
   useEffect(() => {
     const savedCart = localStorage.getItem("shopping_cart");
     if (savedCart) {
       try {
         setCart(JSON.parse(savedCart));
       } catch (e) {
-        console.error("Error al cargar localStorage", e);
+        console.error(e);
       }
     }
+
+    const savedUser = localStorage.getItem("user_session");
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+
     setIsLoaded(true);
   }, []);
 
-  // 2. Guardar carrito en localStorage cuando cambie
   useEffect(() => {
     if (isLoaded) {
       localStorage.setItem("shopping_cart", JSON.stringify(cart));
@@ -86,6 +97,25 @@ export default function Home() {
     toast.error("El carrito se ha vaciado");
   };
 
+  const handleCheckout = () => {
+    if (cart.length === 0) {
+      toast.error("El carrito está vacío");
+      return;
+    }
+    if (!user) {
+      toast.info("Inicia sesión para finalizar tu compra");
+      setIsAuthOpen(true);
+      return;
+    }
+    setIsInvoiceOpen(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("user_session");
+    setUser(null);
+    toast.info("Sesión cerrada");
+  };
+
   const totalCartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
@@ -102,18 +132,38 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex items-center gap-2 bg-indigo-50 border border-indigo-100 px-4 py-2 rounded-xl">
-            <span className="text-lg">🛒</span>
-            <span className="text-sm font-semibold text-indigo-900">
-              Carrito: {totalCartCount} productos
-            </span>
+          <div className="flex items-center gap-4">
+            {user ? (
+              <div className="flex items-center gap-3 bg-gray-100 px-3 py-1.5 rounded-xl text-xs">
+                <span className="font-semibold text-gray-700">👤 {user.name}</span>
+                <button
+                  onClick={handleLogout}
+                  className="text-red-500 hover:underline cursor-pointer font-medium"
+                >
+                  Salir
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => setIsAuthOpen(true)}
+                className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold px-4 py-2 rounded-xl transition shadow-sm cursor-pointer"
+              >
+                Iniciar Sesión / Registro
+              </button>
+            )}
+
+            <div className="flex items-center gap-2 bg-indigo-50 border border-indigo-100 px-4 py-2 rounded-xl">
+              <span className="text-lg">🛒</span>
+              <span className="text-sm font-semibold text-indigo-900">
+                {totalCartCount} productos
+              </span>
+            </div>
           </div>
         </header>
 
         {/* Layout Principal */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 flex flex-col gap-6">
-            {/* Filtro por Categorías */}
             <section>
               <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
                 Filtrar por Categoría
@@ -135,7 +185,6 @@ export default function Home() {
               </div>
             </section>
 
-            {/* Grid del Catálogo */}
             <section className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {filteredProducts.map((product) => (
                 <ProductCard
@@ -147,7 +196,6 @@ export default function Home() {
             </section>
           </div>
 
-          {/* Panel del Carrito */}
           <div className="lg:col-span-1">
             <div className="sticky top-8">
               <Cart
@@ -156,10 +204,33 @@ export default function Home() {
                 onRemoveItem={handleRemoveItem}
                 onClearCart={handleClearCart}
               />
+              {cart.length > 0 && (
+                <button
+                  onClick={handleCheckout}
+                  className="w-full mt-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition shadow-md cursor-pointer text-sm"
+                >
+                  💳 Proceder a la Compra
+                </button>
+              )}
             </div>
           </div>
         </div>
       </div>
+
+      {/* Modales */}
+      <AuthModal
+        isOpen={isAuthOpen}
+        onClose={() => setIsAuthOpen(false)}
+        onLoginSuccess={(userData) => setUser(userData)}
+      />
+
+      <InvoiceModal
+        isOpen={isInvoiceOpen}
+        onClose={() => setIsInvoiceOpen(false)}
+        cart={cart}
+        user={user}
+        onClearCart={handleClearCart}
+      />
     </main>
   );
 }
