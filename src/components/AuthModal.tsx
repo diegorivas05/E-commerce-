@@ -24,39 +24,88 @@ export function AuthModal({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!email.trim() || !password.trim() || (!isLogin && !name.trim())) {
+    const trimmedEmail = email.trim().toLowerCase();
+    const trimmedPassword = password.trim();
+
+    // 1. Validar campos vacíos
+    if (!trimmedEmail || !trimmedPassword || (!isLogin && !name.trim())) {
       toast.warning("Campos incompletos", {
-        description: "Por favor llena todos los campos solicitados.",
+        description: "Por favor llena todos los campos obligatorios.",
       });
       return;
     }
 
-    if (password.length < 4) {
+    // 2. Validar longitud de contraseña
+    if (trimmedPassword.length < 4) {
       toast.error("Contraseña muy corta", {
         description: "La contraseña debe tener al menos 4 caracteres.",
       });
       return;
     }
 
-    const userName = isLogin ? email.split("@")[0] : name;
-    const userData = { name: userName, email };
+    // Obtener lista de usuarios registrados
+    const existingUsers = JSON.parse(localStorage.getItem("registered_users") || "[]");
 
-    // Guardar sesión
-    localStorage.setItem("user_session", JSON.stringify(userData));
-    onLoginSuccess(userData);
-
-    // Alertas de UX con Sonner
     if (isLogin) {
-      toast.success(`¡Bienvenido de nuevo, ${userName}! 👋`, {
+      // --- MODO INICIAR SESIÓN ---
+      const foundUser = existingUsers.find(
+        (u: { email: string; password: string }) => u.email === trimmedEmail
+      );
+
+      if (!foundUser) {
+        toast.error("Usuario no registrado ❌", {
+          description: "No existe una cuenta con este correo. Haz clic en 'Regístrate aquí'.",
+        });
+        return;
+      }
+
+      if (foundUser.password !== trimmedPassword) {
+        toast.error("Contraseña incorrecta 🔒", {
+          description: "La contraseña ingresada no coincide con el registro.",
+        });
+        return;
+      }
+
+      // Inicio exitoso
+      const userData = { name: foundUser.name, email: foundUser.email };
+      localStorage.setItem("user_session", JSON.stringify(userData));
+      onLoginSuccess(userData);
+
+      toast.success(`¡Bienvenido de nuevo, ${foundUser.name}! 👋`, {
         description: "Has iniciado sesión correctamente.",
       });
     } else {
+      // --- MODO REGISTRO DE CUENTA ---
+      const userExists = existingUsers.some(
+        (u: { email: string }) => u.email === trimmedEmail
+      );
+
+      if (userExists) {
+        toast.warning("Correo ya registrado ⚠️", {
+          description: "Ya existe una cuenta asociada a este correo. Intenta iniciar sesión.",
+        });
+        return;
+      }
+
+      const newUser = {
+        name: name.trim(),
+        email: trimmedEmail,
+        password: trimmedPassword,
+      };
+
+      // Guardar en la base local de usuarios y abrir sesión
+      localStorage.setItem("registered_users", JSON.stringify([...existingUsers, newUser]));
+      
+      const userData = { name: newUser.name, email: newUser.email };
+      localStorage.setItem("user_session", JSON.stringify(userData));
+      onLoginSuccess(userData);
+
       toast.success(`¡Cuenta creada con éxito! 🎉`, {
-        description: `Bienvenido a Hogar & Muebles, ${userName}.`,
+        description: `Bienvenido a Hogar & Muebles, ${newUser.name}.`,
       });
     }
 
-    // Resetear formulario y cerrar
+    // Limpiar campos y cerrar modal
     setName("");
     setEmail("");
     setPassword("");
@@ -65,7 +114,7 @@ export function AuthModal({
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-      <div className="bg-white w-full max-w-md rounded-2xl p-6 sm:p-8 shadow-2xl relative border border-gray-100 animate-fade-in">
+      <div className="bg-white w-full max-w-md rounded-2xl p-6 sm:p-8 shadow-2xl relative border border-gray-100">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 font-bold text-lg cursor-pointer"
@@ -122,7 +171,7 @@ export function AuthModal({
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
+              placeholder="Mínimo 4 caracteres"
               className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-gray-900 placeholder:text-gray-400 text-sm focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600"
             />
           </div>
