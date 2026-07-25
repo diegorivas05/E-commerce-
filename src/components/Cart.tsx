@@ -1,118 +1,113 @@
 "use client";
 
-import Image from "next/image";
 import { CartItem } from "@/types/product";
 
 interface CartProps {
   cart: CartItem[];
-  onUpdateQuantity: (productId: number, newQuantity: number) => void;
-  onRemoveItem: (productId: number) => void;
+  onUpdateQuantity: (id: number, quantity: number) => void;
+  onRemoveItem: (id: number) => void;
   onClearCart: () => void;
 }
 
-export const Cart = ({
+export function Cart({
   cart,
   onUpdateQuantity,
   onRemoveItem,
   onClearCart,
-}: CartProps) => {
-  const totalAmount = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
-
-  if (cart.length === 0) {
-    return (
-      <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 text-center">
-        <span className="text-4xl block mb-2">🛒</span>
-        <h3 className="text-lg font-bold text-gray-800">El carrito está vacío</h3>
-        <p className="text-sm text-gray-500 mt-1">
-          Agrega productos desde el catálogo para comenzar tu compra.
-        </p>
-      </div>
-    );
-  }
+}: CartProps) {
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col gap-6">
-      <div className="flex items-center justify-between border-b border-gray-100 pb-4">
+    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+      <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-bold text-gray-900">Tu Carrito de Compras</h2>
-        <button
-          onClick={onClearCart}
-          className="text-xs font-semibold text-red-600 hover:text-red-800 transition-colors cursor-pointer"
-        >
-          Vaciar Carrito
-        </button>
-      </div>
-
-      {/* Lista de productos en el carrito */}
-      <div className="flex flex-col gap-4 max-h-[400px] overflow-y-auto pr-1">
-        {cart.map((item) => (
-          <div
-            key={item.id}
-            className="flex items-center justify-between gap-3 border-b border-gray-50 pb-3"
+        {cart.length > 0 && (
+          <button
+            onClick={onClearCart}
+            className="text-xs text-red-500 hover:underline cursor-pointer font-medium"
           >
-            <div className="relative w-14 h-14 flex-shrink-0">
-              <Image
-                src={item.urlImage}
-                alt={item.title}
-                fill
-                className="object-cover rounded-md"
-                sizes="56px"
-              />
-            </div>
-
-            <div className="flex-1 min-w-0">
-              <h4 className="text-sm font-semibold text-gray-800 truncate">
-                {item.title}
-              </h4>
-              <p className="text-xs text-gray-500">
-                ${item.price.toFixed(2)} c/u
-              </p>
-            </div>
-
-            {/* Controles de cantidad */}
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
-                className="w-7 h-7 rounded-md bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold flex items-center justify-center transition-colors cursor-pointer"
-              >
-                -
-              </button>
-              <span className="text-sm font-semibold text-gray-800 w-5 text-center">
-                {item.quantity}
-              </span>
-              <button
-                onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
-                className="w-7 h-7 rounded-md bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold flex items-center justify-center transition-colors cursor-pointer"
-              >
-                +
-              </button>
-            </div>
-
-            {/* Subtotal y Eliminar */}
-            <div className="text-right flex flex-col items-end gap-1">
-              <span className="text-sm font-bold text-gray-900">
-                ${(item.price * item.quantity).toFixed(2)}
-              </span>
-              <button
-                onClick={() => onRemoveItem(item.id)}
-                className="text-xs text-red-500 hover:text-red-700 transition-colors cursor-pointer"
-              >
-                Eliminar
-              </button>
-            </div>
-          </div>
-        ))}
+            Vaciar Carrito
+          </button>
+        )}
       </div>
 
-      {/* Resumen y Total */}
-      <div className="border-t border-gray-100 pt-4 flex flex-col gap-3">
-        <div className="flex justify-between items-center text-lg font-extrabold text-gray-900">
-          <span>Total a Pagar:</span>
-          <span className="text-indigo-600">${totalAmount.toFixed(2)}</span>
+      {cart.length === 0 ? (
+        <div className="text-center py-8">
+          <p className="text-4xl mb-2">🛒</p>
+          <p className="text-gray-500 text-sm">El carrito está vacío</p>
         </div>
-      </div>
+      ) : (
+        <div className="flex flex-col gap-4">
+          <div className="max-h-80 overflow-y-auto pr-1 flex flex-col gap-3">
+            {cart.map((item) => (
+              <div
+                key={item.id}
+                className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl border border-gray-100"
+              >
+                {/* Imagen del producto en el carrito */}
+                <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-200 shrink-0">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Imagen de respaldo por si la URL falla
+                      (e.target as HTMLImageElement).src =
+                        "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300&q=80";
+                    }}
+                  />
+                </div>
+
+                {/* Detalles del producto */}
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-xs font-bold text-gray-800 truncate">
+                    {item.name}
+                  </h4>
+                  <p className="text-xs text-gray-500">
+                    ${item.price.toFixed(2)} c/u
+                  </p>
+
+                  <div className="flex items-center gap-2 mt-2">
+                    <button
+                      onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
+                      className="w-6 h-6 rounded bg-white border border-gray-200 flex items-center justify-center text-xs font-bold hover:bg-gray-100 cursor-pointer"
+                    >
+                      -
+                    </button>
+                    <span className="text-xs font-semibold">{item.quantity}</span>
+                    <button
+                      onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
+                      className="w-6 h-6 rounded bg-white border border-gray-200 flex items-center justify-center text-xs font-bold hover:bg-gray-100 cursor-pointer"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+
+                {/* Subtotal y Botón Eliminar */}
+                <div className="text-right shrink-0">
+                  <p className="text-xs font-bold text-gray-900">
+                    ${(item.price * item.quantity).toFixed(2)}
+                  </p>
+                  <button
+                    onClick={() => onRemoveItem(item.id)}
+                    className="text-[10px] text-red-500 hover:underline cursor-pointer font-medium mt-1 block"
+                  >
+                    Eliminar
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="border-t border-gray-100 pt-4 flex justify-between items-center">
+            <span className="font-bold text-gray-900">Total a Pagar:</span>
+            <span className="text-xl font-black text-indigo-600">
+              ${total.toFixed(2)}
+            </span>
+          </div>
+        </div>
+      )}
     </div>
   );
-};
+}
