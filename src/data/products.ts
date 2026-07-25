@@ -1,175 +1,115 @@
-import { Product } from "@/types/product";
-
-export const productsData: Product[] = [
-  // --- MESAS ---
+export const products = [
+  // MESAS
   {
     id: 1,
-    title: "Mesa de Comedor Roble Nórdico",
-    description: "Mesa espaciosa de madera de roble macizo con acabado natural para 6 personas.",
-    price: 380.00,
+    name: "Mesa de Comedor Roble Nórdica",
     category: "Mesas",
-    urlImage: "https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?q=80&w=600&auto=format&fit=crop"
+    price: 380.00,
+    description: "Mesa de comedor minimalista construida en madera de roble natural para 6 personas.",
+    image: "https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 2,
-    title: "Mesa Centro de Cristal y Metal",
-    description: "Mesa de centro estilo industrial con cristal templado y estructura de acero negro.",
-    price: 145.00,
+    name: "Mesa Centro de Cristal y Metal",
     category: "Mesas",
-    urlImage: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=600&auto=format&fit=crop"
+    price: 145.00,
+    description: "Mesa de centro estilizada con superficie de vidrio templado y estructura de acero negro.",
+    image: "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 3,
-    title: "Escritorio Minimalista Ejecutivo",
-    description: "Escritorio de oficina con cajones ocultos y diseño ergonómico en madera clara.",
-    price: 220.00,
+    name: "Escritorio Minimalista Ejecutivo",
     category: "Mesas",
-    urlImage: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?q=80&w=600&auto=format&fit=crop"
+    price: 220.00,
+    description: "Escritorio amplio de madera clara ideal para oficina en casa o estudio.",
+    image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?q=80&w=800&auto=format&fit=crop"
   },
 
-  // --- SILLONES ---
+  // SILLONES
   {
     id: 4,
-    title: "Sofá Seccional Gris Moderno",
-    description: "Sofá chaise longue de 3 plazas tapizado en tela transpirable de alta densidad.",
-    price: 650.00,
+    name: "Sofa Seccional Gris Moderno",
     category: "Sillones",
-    urlImage: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=600&auto=format&fit=crop"
+    price: 650.00,
+    description: "Soft sofa de 3 plazas tapizado en tela transpirable de alta densidad.",
+    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 5,
-    title: "Sillón Reclinable de Cuero Moka",
-    description: "Sillón individual reclinable con acolchado mullido y soporte lumbar premium.",
-    price: 310.00,
+    name: "Sillón Reclinable de Cuero Moka",
     category: "Sillones",
-    urlImage: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=600&auto=format&fit=crop"
+    price: 310.00,
+    description: "Sillón individual con sistema reclinable ergonómico acolchado.",
+    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 6,
-    title: "Sillón Ocasional Velvet Azul",
-    description: "Sillón decorativo tapizado en terciopelo suave con patas de metal dorado.",
-    price: 185.00,
+    name: "Sillón Ocasional Velvet Azul",
     category: "Sillones",
-    urlImage: "https://images.unsplash.com/photo-1580481072645-022f9a6d83d0?q=80&w=600&auto=format&fit=crop"
+    price: 185.00,
+    description: "Sillón decorativo tapizado en terciopelo suave con patas de metal dorado.",
+    image: "https://images.unsplash.com/photo-1580481072645-022f9a6d83d0?q=80&w=800&auto=format&fit=crop"
   },
 
-  // --- ARMARIOS Y MUEBLES ---
+  // ARMARIOS
   {
     id: 7,
-    title: "Armario Zapatero 3 Puertas",
-    description: "Ropero organizador en acabado blanco mate con espejo central y repisas ajustables.",
-    price: 420.00,
+    name: "Ropero de Madera 3 Puertas",
     category: "Armarios",
-    urlImage: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=600&auto=format&fit=crop"
+    price: 520.00,
+    description: "Armario amplio con cajoneras internas y espejo integrado en puerta central.",
+    image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 8,
-    title: "Aparador Credenza Estilo Mid-Century",
-    description: "Mueble buffet bajo de madera con 4 puertas correderas para comedor o sala.",
-    price: 290.00,
+    name: "Zapatera Vertical Organizadora",
     category: "Armarios",
-    urlImage: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?q=80&w=600&auto=format&fit=crop"
+    price: 110.00,
+    description: "Mueble zapatero compacto con capacidad para 18 pares de calzado.",
+    image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 9,
-    title: "Estantería Flotante Abierta",
-    description: "Librero y mueble de exhibición de 5 niveles en madera de pino y marco metálico.",
-    price: 160.00,
+    name: "Estantería Abierta Estilo Industrial",
     category: "Armarios",
-    urlImage: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=600&auto=format&fit=crop"
+    price: 175.00,
+    description: "Librero de 5 niveles con repisas de madera y parantes metálicos.",
+    image: "https://images.unsplash.com/photo-1594620302200-9a762244a156?q=80&w=800&auto=format&fit=crop"
   },
 
-  // --- ESPEJOS ---
+  // SILLAS
   {
     id: 10,
-    title: "Espejo de Cuerpo Entero de Arco",
-    description: "Espejo de pie con marco metálico dorado curvilíneo para dormitorio o vestidor.",
-    price: 135.00,
-    category: "Espejos",
-    urlImage: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=600&auto=format&fit=crop"
+    name: "Silla de Escritorio Ergonomía Total",
+    category: "Sillas",
+    price: 210.00,
+    description: "Silla giratoria con apoyo para la cabeza, malla respirable y descansa brazos 3D.",
+    image: "https://images.unsplash.com/photo-1505797149-43b0069ec26b?q=80&w=800&auto=format&fit=crop"
   },
   {
     id: 11,
-    title: "Espejo Pared Circular Bamboo",
-    description: "Espejo decorativo redondo con borde tallado en mimbre/bambú natural.",
-    price: 75.00,
-    category: "Espejos",
-    urlImage: "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?q=80&w=600&auto=format&fit=crop"
+    name: "Set x2 Sillas Comedor Eames",
+    category: "Sillas",
+    price: 95.00,
+    description: "Sillas de polipropileno blanco con patas de madera estilo escandinavo.",
+    image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?q=80&w=800&auto=format&fit=crop"
   },
+
+  // ILUMINACIÓN
   {
     id: 12,
-    title: "Espejo Retroiluminado LED",
-    description: "Espejo de baño moderno con luz LED cálida integrada y sistema antivaho.",
-    price: 195.00,
-    category: "Espejos",
-    urlImage: "https://images.unsplash.com/photo-1622372738946-62e02505feb3?q=80&w=600&auto=format&fit=crop"
+    name: "Lámpara de Mesa Cerámica Artística",
+    category: "Iluminación",
+    price: 55.00,
+    description: "Lámpara de noche para mesa con base de cerámica texturizada y pantalla cálida.",
+    image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?q=80&w=800&auto=format&fit=crop"
   },
-
-  // --- SILLAS ---
   {
     id: 13,
-    title: "Set x4 Sillas Eames Comedor",
-    description: "Juego de 4 sillas de diseño nórdico con patas de madera de haya y asiento ergonómico.",
-    price: 160.00,
-    category: "Sillas",
-    urlImage: "https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=600&auto=format&fit=crop"
-  },
-  {
-    id: 14,
-    title: "Silla de Escritorio Ergonomía Total",
-    description: "Silla giratoria con apoyo para la cabeza, malla respirable y descansa brazos 3D.",
-    price: 210.00,
-    category: "Sillas",
-    urlImage: "https://images.unsplash.com/photo-1580481072645-022f9a6d83d0?q=80&w=600&auto=format&fit=crop"
-  },
-  {
-    id: 15,
-    title: "Banca Bar Alta de Madera Maciza",
-    description: "Taburete alto estilo rústico para barra de cocina o desayunador.",
-    price: 85.00,
-    category: "Sillas",
-    urlImage: "https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=600&auto=format&fit=crop"
-  },
-
-  // --- ILUMINACIÓN ---
-  {
-    id: 16,
-    title: "Lámpara de Pie Trípode Nórdica",
-    description: "Lámpara de lectura para sala con estructura de madera y pantalla de lino blanco.",
-    price: 110.00,
+    name: "Lámpara de Pie Arquitectónica",
     category: "Iluminación",
-    urlImage: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?q=80&w=600&auto=format&fit=crop"
-  },
-  {
-    id: 17,
-    title: "Lámpara Colgante Vintage Industrial",
-    description: "Lámpara de techo estilo campana metálica en negro mate para barra de cocina.",
-    price: 65.00,
-    category: "Iluminación",
-    urlImage: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?q=80&w=600&auto=format&fit=crop"
-  },
-  {
-    id: 18,
-    title: "Lámpara de Mesa Cerámica Artística",
-    description: "Lámpara de noche para mesa de noche con base de cerámica texturizada.",
-    price: 55.00,
-    category: "Iluminación",
-    urlImage: "https://images.unsplash.com/photo-1543198181-e619b692b11c?q=80&w=600&auto=format&fit=crop"
-  },
-  {
-    id: 19,
-    title: "Plafón LED de Techo Regulable",
-    description: "Luminaria moderna de techo ultra delgada con control remoto para intensidad de luz.",
-    price: 90.00,
-    category: "Iluminación",
-    urlImage: "https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?q=80&w=600&auto=format&fit=crop"
-  },
-  {
-    id: 20,
-    title: "Lámpara de Escritorio Brazo Flexible",
-    description: "Lámpara de trabajo articulada con puerto de carga USB integrado.",
-    price: 45.00,
-    category: "Iluminación",
-    urlImage: "https://images.unsplash.com/photo-1534353436294-0dbd4bdac845?q=80&w=600&auto=format&fit=crop"
+    price: 130.00,
+    description: "Lámpara de pie articulada con acabado negro mate para sala o lectura.",
+    image: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?q=80&w=800&auto=format&fit=crop"
   }
 ];

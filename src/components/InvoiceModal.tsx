@@ -20,95 +20,108 @@ export function InvoiceModal({
 }: InvoiceModalProps) {
   if (!isOpen) return null;
 
-  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const tax = subtotal * 0.13; // 13% IVA El Salvador
+  const subtotal = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+  const tax = subtotal * 0.13; // IVA 13%
   const total = subtotal + tax;
-  const invoiceNumber = `FAC-${Math.floor(100000 + Math.random() * 900000)}`;
-  const currentDate = new Date().toLocaleDateString();
 
-  const handleSendEmail = () => {
-    toast.success("📧 ¡Factura enviada por correo con éxito!", {
-      description: `Se ha enviado una copia a ${user?.email}`,
+  const handleConfirmPurchase = () => {
+    toast.success("¡Compra realizada con éxito!", {
+      description: "Tu factura ha sido generada y enviada a tu correo.",
     });
     onClearCart();
     onClose();
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-xl relative max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fade-in">
+      <div className="bg-white w-full max-w-lg rounded-2xl shadow-2xl p-6 sm:p-8 overflow-hidden relative border border-gray-100">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 font-bold"
+          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 font-bold text-xl cursor-pointer"
         >
           ✕
         </button>
 
-        {/* Encabezado de Factura */}
-        <div className="border-b border-gray-200 pb-4 mb-4">
-          <div className="flex justify-between items-start">
-            <div>
-              <h2 className="text-xl font-bold text-gray-900">FACTURA DE COMPRA</h2>
-              <p className="text-xs text-gray-500">Hogar & Muebles Store S.A. de C.V.</p>
-            </div>
-            <div className="text-right">
-              <span className="text-xs font-mono font-bold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">
-                {invoiceNumber}
-              </span>
-              <p className="text-xs text-gray-400 mt-1">{currentDate}</p>
-            </div>
-          </div>
+        <div className="text-center mb-6">
+          <div className="text-4xl mb-2">🧾</div>
+          <h2 className="text-2xl font-black text-gray-900 tracking-tight">
+            Factura de Compra
+          </h2>
+          <p className="text-xs text-gray-500">
+            Hogar & Muebles Store - Comprobante Digital
+          </p>
+        </div>
 
-          <div className="mt-4 bg-gray-50 p-3 rounded-lg text-xs">
-            <p className="font-semibold text-gray-700">Cliente:</p>
-            <p className="text-gray-600">{user?.name}</p>
-            <p className="text-gray-600">{user?.email}</p>
-          </div>
+        {/* Datos del Cliente */}
+        <div className="bg-gray-50 p-4 rounded-xl mb-6 text-xs text-gray-600 border border-gray-100 space-y-1">
+          <p>
+            <strong className="text-gray-800">Cliente:</strong>{" "}
+            {user?.name || "Cliente General"}
+          </p>
+          <p>
+            <strong className="text-gray-800">Correo:</strong>{" "}
+            {user?.email || "N/A"}
+          </p>
+          <p>
+            <strong className="text-gray-800">Fecha:</strong>{" "}
+            {new Date().toLocaleDateString()}
+          </p>
         </div>
 
         {/* Detalle de Productos */}
-        <div className="mb-4">
-          <h3 className="text-xs font-bold text-gray-500 uppercase mb-2">Detalle de Ítems</h3>
-          <div className="divide-y divide-gray-100">
-            {cart.map((item) => (
-              <div key={item.id} className="py-2 flex justify-between text-xs">
-                <div>
-                  <p className="font-medium text-gray-800">{item.title}</p>
-                  <p className="text-gray-400">
-                    {item.quantity} x ${item.price.toFixed(2)}
-                  </p>
-                </div>
-                <span className="font-semibold text-gray-800">
-                  ${(item.price * item.quantity).toFixed(2)}
-                </span>
+        <div className="max-h-48 overflow-y-auto mb-6 pr-1 divide-y divide-gray-100">
+          {cart.map((item) => (
+            <div
+              key={item.id}
+              className="py-2.5 flex justify-between items-center text-xs"
+            >
+              <div className="flex-1 pr-4">
+                <p className="font-semibold text-gray-800">{item.name}</p>
+                <p className="text-gray-400">
+                  {item.quantity} x ${item.price.toFixed(2)}
+                </p>
               </div>
-            ))}
-          </div>
+              <span className="font-bold text-gray-900">
+                ${(item.price * item.quantity).toFixed(2)}
+              </span>
+            </div>
+          ))}
         </div>
 
-        {/* Totales */}
-        <div className="border-t border-gray-200 pt-3 flex flex-col gap-1 text-xs mb-6">
-          <div className="flex justify-between text-gray-600">
-            <span>Subtotal:</span>
+        {/* Resumen de Totales */}
+        <div className="border-t border-gray-200 pt-4 space-y-2 mb-6 text-xs">
+          <div className="flex justify-between text-gray-500">
+            <span>Subtotal</span>
             <span>${subtotal.toFixed(2)}</span>
           </div>
-          <div className="flex justify-between text-gray-600">
-            <span>IVA (13%):</span>
+          <div className="flex justify-between text-gray-500">
+            <span>IVA (13%)</span>
             <span>${tax.toFixed(2)}</span>
           </div>
-          <div className="flex justify-between text-sm font-bold text-indigo-900 border-t border-dashed pt-2 mt-1">
-            <span>Total a Pagar:</span>
-            <span>${total.toFixed(2)}</span>
+          <div className="flex justify-between text-base font-extrabold text-gray-900 pt-2 border-t border-gray-100">
+            <span>Total a Pagar</span>
+            <span className="text-emerald-600">${total.toFixed(2)}</span>
           </div>
         </div>
 
-        {/* Botón de Confirmación y Envío */}
-        <button
-          onClick={handleSendEmail}
-          className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-xl text-sm transition shadow-md flex items-center justify-center gap-2 cursor-pointer"
-        >
-          ✉️ Confirmar Compra y Enviar Factura por Correo
-        </button>
+        {/* Botones de Acción */}
+        <div className="flex gap-3">
+          <button
+            onClick={onClose}
+            className="w-1/2 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold text-xs rounded-xl transition cursor-pointer"
+          >
+            Cancelar
+          </button>
+          <button
+            onClick={handleConfirmPurchase}
+            className="w-1/2 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs rounded-xl transition shadow-md cursor-pointer"
+          >
+            Confirmar Pago
+          </button>
+        </div>
       </div>
     </div>
   );

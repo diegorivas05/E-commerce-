@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { productsData } from "@/data/products";
+import { products } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 import { Cart } from "@/components/Cart";
 import { AuthModal } from "@/components/AuthModal";
@@ -25,13 +25,17 @@ export default function Home() {
       try {
         setCart(JSON.parse(savedCart));
       } catch (e) {
-        console.error(e);
+        console.error("Error al cargar carrito guardado:", e);
       }
     }
 
     const savedUser = localStorage.getItem("user_session");
     if (savedUser) {
-      setUser(JSON.parse(savedUser));
+      try {
+        setUser(JSON.parse(savedUser));
+      } catch (e) {
+        console.error("Error al cargar sesión de usuario:", e);
+      }
     }
 
     setIsLoaded(true);
@@ -45,13 +49,13 @@ export default function Home() {
 
   const categories = [
     "Todas",
-    ...Array.from(new Set(productsData.map((p) => p.category))),
+    ...Array.from(new Set(products.map((p) => p.category))),
   ];
 
   const filteredProducts =
     selectedCategory === "Todas"
-      ? productsData
-      : productsData.filter((p) => p.category === selectedCategory);
+      ? products
+      : products.filter((p) => p.category === selectedCategory);
 
   const handleAddToCart = (product: Product) => {
     setCart((prevCart) => {
@@ -66,7 +70,7 @@ export default function Home() {
       return [...prevCart, { ...product, quantity: 1 }];
     });
 
-    toast.success(`"${product.title}" agregado al carrito`, {
+    toast.success(`"${product.name}" agregado al carrito`, {
       description: `Precio: $${product.price.toFixed(2)}`,
     });
   };
@@ -87,7 +91,7 @@ export default function Home() {
     const itemToRemove = cart.find((item) => item.id === productId);
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
     if (itemToRemove) {
-      toast.info(`"${itemToRemove.title}" eliminado del carrito`);
+      toast.info(`"${itemToRemove.name}" eliminado del carrito`);
     }
   };
 
@@ -118,6 +122,14 @@ export default function Home() {
 
   const totalCartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
+  if (!isLoaded) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <p className="text-gray-500 font-medium animate-pulse">Cargando tienda...</p>
+      </div>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -128,7 +140,7 @@ export default function Home() {
               Hogar & Muebles Store 🏠
             </h1>
             <p className="text-sm text-gray-500 mt-1">
-              Catálogo exclusivo de muebles y decoración ({productsData.length} ítems)
+              Catálogo exclusivo de muebles y decoración ({products.length} ítems)
             </p>
           </div>
 

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Product } from "@/types/product";
 
 interface ProductCardProps {
@@ -8,41 +7,46 @@ interface ProductCardProps {
   onAddToCart: (product: Product) => void;
 }
 
-export const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
+export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   return (
-    <div className="flex flex-col sm:flex-row items-center gap-4 bg-white p-4 rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-      {/* Imagen a la izquierda usando next/image */}
-      <div className="relative w-28 h-28 flex-shrink-0">
-        <Image
-          src={product.urlImage}
-          alt={product.title}
-          fill
-          className="object-cover rounded-lg"
-          sizes="112px"
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col justify-between hover:shadow-md transition">
+      <div className="relative h-48 w-full bg-gray-100">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-full object-cover"
         />
-      </div>
-
-      {/* Información del producto a la derecha */}
-      <div className="flex-1 text-left w-full">
-        <span className="text-xs font-semibold text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">
+        <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-gray-700 text-xs font-semibold px-2.5 py-1 rounded-full shadow-sm">
           {product.category}
         </span>
-        <h3 className="text-lg font-bold text-gray-800 mt-1">{product.title}</h3>
-        <p className="text-xs text-gray-500 line-clamp-2 my-1">
-          {product.description}
-        </p>
-        <div className="flex items-center justify-between mt-3">
-          <span className="text-xl font-black text-gray-900">
-            ${product.price.toFixed(2)}
-          </span>
+      </div>
+
+      <div className="p-5 flex-1 flex flex-col justify-between">
+        <div>
+          <h3 className="font-bold text-gray-900 text-base mb-1 line-clamp-1">
+            {product.name}
+          </h3>
+          <p className="text-gray-500 text-xs line-clamp-2 mb-4 leading-relaxed">
+            {product.description}
+          </p>
+        </div>
+
+        <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+          <div>
+            <span className="text-xs text-gray-400 block">Precio</span>
+            <span className="text-lg font-extrabold text-indigo-600">
+              ${product.price.toFixed(2)}
+            </span>
+          </div>
+
           <button
             onClick={() => onAddToCart(product)}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors cursor-pointer"
+            className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-xs px-4 py-2.5 rounded-xl transition cursor-pointer shadow-sm active:scale-95"
           >
-            Agregar al Carrito
+            + Agregar
           </button>
         </div>
       </div>
     </div>
   );
-};
+}
